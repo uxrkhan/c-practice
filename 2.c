@@ -1,4 +1,4 @@
-// 1. Calculate Sum & Average of an Array
+// 2. Calculate the Sum of the Array Elements using Pointer
 
 #include <stdio.h>
 
@@ -15,10 +15,7 @@ int main() {
 
 	int sum = 0;
 	for (int i = 0; i < n; i++) {
-		sum += arr[i];
+		sum += *(arr + i);
 	}
 	printf("SUM: %d\n", sum);
-
-	float average = sum / (float)n;
-	printf("AVERAGE: %.2f", average);
 }
