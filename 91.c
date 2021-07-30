@@ -1,0 +1,55 @@
+// 91. find Longer Repeating Sequence
+
+#include <stdio.h>
+#include <string.h>
+
+#define max(a, b) (a > b ? a : b)
+
+void printLRS(char str[]) {
+	int n = strlen(str);
+	int dp[n+1][n+1];
+
+	for (int i = 0; i <= n; i++) {
+		for (int j = 0; j <= n; j++) {
+			if (i == 0 || j == 0) {
+				dp[i][j] = 0;
+			} else if (str[i-1] == str[j-1] && i != j) {
+				dp[i][j] = 1 + dp[i-1][j-1];
+			} else {
+				dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
+			}
+		}
+	}
+
+	int len = dp[n][n];
+	if (len == 0) {
+		printf("NO REPEATING SUBSEQUENCE!");
+		return;
+	} 
+
+	char lrs[len+1];
+	lrs[len] = '\0';
+	int i = n, j = n, k = len;
+	while (i > 0 && j > 0) {
+		if (str[i-1] == str[j-1] && i!=j) {
+			lrs[k-1] = str[i-1]; 
+			i--;
+			j--;
+			k--;
+		} else if (dp[i-1][j] > dp[i][j-1]) {
+			i--;
+		} else {
+			j--;
+		}
+	}
+
+	printf("LONGEST REPEATING SUBSEQUENCE: %s", lrs);
+
+}
+
+int main() {
+	printf("STRING: ");
+	char str[100];
+	gets(str);
+	printLRS(str);
+}
