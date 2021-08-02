@@ -1,6 +1,6 @@
 # C Practice Questions
 
-1. Calculate Sum &amp; Average of an Array
+1. Calculate Sum and Average of an Array
 2. Calculate the Sum of the Array Elements using Pointer
 3. Calculate Sum of all Elements of an Array using Pointers as Arguments
 4. Compute the Sum of two One-Dimensional Arrays using Malloc
